@@ -28,15 +28,22 @@ class MainActivity : AppCompatActivity() {
              * for starting a service
              */
             Intent(this, MyService::class.java).also {
-                startService(intent)
+                startService(it)
                 statusTextView.text = "Service is running.."
             }
+
+
+
+
         }
         stopButtonView.setOnClickListener {
             /**
              * for stopping a service
              */
             Intent(this, MyService::class.java).also {
+
+               // it.putExtra("data", STOP_SERVICE)
+
                 stopService(it)
                 statusTextView.text = "Service is stopped!"
             }

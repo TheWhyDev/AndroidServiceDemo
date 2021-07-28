@@ -12,6 +12,7 @@ import androidx.core.app.NotificationCompat
 class MyForegroundService : Service() {
 
     val channelId = "channelId"
+
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         //create notification channel
         createNotificationChannel()
@@ -27,6 +28,7 @@ class MyForegroundService : Service() {
             .setContentText("notification content")
             .setSmallIcon(R.mipmap.ic_launcher)
             .setContentIntent(pendingIntent)
+            .setAutoCancel(true)
             .build()
 
         startForeground(

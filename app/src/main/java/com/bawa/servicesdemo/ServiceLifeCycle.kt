@@ -1,9 +1,20 @@
 package com.bawa.servicesdemo
 
+import android.app.IntentService
 import android.app.Service
 import android.content.Intent
 import android.os.IBinder
 
+/**
+ * backgroun Thread
+ */
+//class ServiceLifeCycle : IntentService() {
+
+
+/**
+ *
+ *Main Thread
+ */
 class ServiceLifeCycle : Service() {
 
     var startMode = START_STICKY
