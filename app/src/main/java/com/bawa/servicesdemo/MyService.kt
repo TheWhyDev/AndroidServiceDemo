@@ -54,7 +54,10 @@ class MyService : Service() {
             start()                                                                              //is equivalent to this.start()
             //get the looper from the thread
             serviceLooper = looper
-            serviceHandler = ServiceHandler(looper)
+            serviceLooper?.let {
+                serviceHandler = ServiceHandler(it)
+            }
+
         }
 
     }
@@ -99,9 +102,14 @@ class MyService : Service() {
      * service can be killed by calling selfStop or stopService from any  android component
      */
     override fun onDestroy() {
-        stopSelf()
-        if(mediaPlayer.isPlaying)
-        mediaPlayer.stop()
+        //stopSelf()
+
+        //stop the media
+        if(mediaPlayer.isPlaying){
+            mediaPlayer.stop()
+        }
+        //quit after processing messages currently in the queue
+        serviceLooper?.quitSafely()
         super.onDestroy()
     }
 
